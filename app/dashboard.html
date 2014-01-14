@@ -17,8 +17,8 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">
-          <i class="glyphicon glyphicon-stats"></i> Dashboard
+        <a class="navbar-brand" href="#"> <i class="glyphicon glyphicon-stats"></i>
+          Dashboard
         </a>
       </div>
 
@@ -50,20 +50,48 @@
             </ul>
           </li>
         </ul>
-        <form class="navbar-form navbar-right">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search"></div>
-          <button type="submit" class="btn btn-default">
-            <span class="glyphicon glyphicon-search"></span>
-          </button>
-        </form>
+        <div class="nav navbar-right">
+          <form class="navbar-form navbar-left">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search"></div>
+            <button type="submit" class="btn btn-default">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+          </form>
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <img class="media-object img-rounded" src="http://lh6.googleusercontent.com/-daxOe99CQiE/AAAAAAAAAAI/AAAAAAAAAAA/AMREQmkhiNw/s32-c/photo.jpg" alt="Hello username!"></a>
+              <ul class="dropdown-menu pull-right">
+                <li>
+                  <a href="#"> <i class="glyphicon glyphicon-cog"></i>
+                    Manage
+                  </a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                  <a href="#">
+                    <i class="glyphicon glyphicon-off"></i>
+                    Sign out
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
   </div>
   <div class="container">
     <div ng-controller="dashboardController">
       <div class="container" id="newEmployees">
-        <h1>New Employees</h1>
+        <h1>
+          New Employees
+          <button type="button" class="btn btn-success">
+            <span class="glyphicon glyphicon-plus"></span>
+            Add
+          </button>
+        </h1>
         <hr />
         <form>
           <fieldset>
@@ -71,7 +99,10 @@
               <thead>
                 <tr>
                   <th>Progress</th>
-                  <th><a href="" ng-click=""></a>Name</th>
+                  <th>
+                    <a href="" ng-click=""></a>
+                    Name
+                  </th>
                   <th>Date</th>
                   <th>Responsible</th>
                   <th>Actions</th>
@@ -90,15 +121,17 @@
                     </div>
                   </div>
                 </td>
-                <td>{{employee.name}}</td>
+                <td style="width:300px">{{employee.name}}</td>
                 <td>{{employee.date | date}}</td>
                 <td>{{employee.responsible}}</td>
                 <td>
-                  <button type="button" class="btn btn-primary">
-                    <span class="glyphicon glyphicon-wrench"></span> Edit
+                  <button type="button" class="btn btn-primary btn-sm">
+                    <span class="glyphicon glyphicon-wrench"></span>
+                    Edit
                   </button>
-                   <button type="button" class="btn btn-danger">
-                    <span class="glyphicon glyphicon-fire"></span> Delete
+                  <button type="button" class="btn btn-danger btn-sm">
+                    <span class="glyphicon glyphicon-fire"></span>
+                    Delete
                   </button>
                 </td>
               </tr>
@@ -123,8 +156,8 @@
               </thead>
               <tr ng-repeat="employee in readyEmployees">
                 <td>
-                  <div class="progress progress-striped active">
-                    <div class="progress-bar" 
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-success" 
                        role="progressbar"
                        aria-valuenow="{{employee.progress}}"
                        aria-valuemin="0"
@@ -134,14 +167,18 @@
                     </div>
                   </div>
                 </td>
-                <td>{{employee.name}}</td>
+                <td style="width:300px">{{employee.name}}</td>
                 <td>{{employee.date | date}}</td>
                 <td>{{employee.responsible}}</td>
                 <td>
-                  <a href="#">Edit</a>
-                  <a href="#">
-                    <i class="glyphicon glyphicon-fire"></i> Delete
-                  </a>
+                  <button type="button" class="btn btn-primary btn-sm">
+                    <span class="glyphicon glyphicon-wrench"></span>
+                    Edit
+                  </button>
+                  <button type="button" class="btn btn-danger btn-sm">
+                    <span class="glyphicon glyphicon-fire"></span>
+                    Delete
+                  </button>
                 </td>
               </tr>
             </table>
@@ -150,6 +187,16 @@
       </div>
     </div>
   </div>
+  <hr />
+  <footer>
+    <div class="wrap">
+      <div class="container">
+        <p class="text-right">
+          Bravi Software - 2014
+        </p>
+      </div>
+    </div>
+  </footer>
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
