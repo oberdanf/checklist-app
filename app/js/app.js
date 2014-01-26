@@ -1,5 +1,14 @@
 'use strict';
 
+var checklistApp = angular.module('checklistApp', ['ngRoute']);
 
-// Declare app level module which depends on filters, and services
-var checklistApp = angular.module('checklistApp', []);
+checklistApp.config(function($routeProvider, $locationProvider) {
+  $routeProvider.
+  when('/', {
+    templateUrl: 'dashboard.html',
+    controller: 'dashboardController'  
+  }).
+   otherwise({
+        redirectTo: 'dashboard.html'
+      });
+});
