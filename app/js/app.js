@@ -8,7 +8,12 @@ checklistApp.config(function($routeProvider, $locationProvider) {
     templateUrl: 'dashboard.html',
     controller: 'dashboardController'  
   }).
-   otherwise({
-        redirectTo: 'dashboard.html'
-      });
+  when('/edit', {
+    templateUrl: 'edit.html',
+    controller: 'editEmployeeController'  
+  }).
+  otherwise({
+    redirectTo: 'dashboard.html'
+  });
+   $locationProvider.html5Mode(true);
 });

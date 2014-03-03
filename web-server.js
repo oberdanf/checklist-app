@@ -3,20 +3,21 @@
 // Module dependencies.
 var express = require('express'),
     path = require('path'),
-    fs = require('fs');
+    fs = require('fs'),
+    mongoose = require('mongoose');
 
 var app = express();
 
 // Connect to database
-// var db = require('./lib/db/mongo');
+mongoose.connect("mongodb://localhost/checklistApp");
 
 // Bootstrap models
-// var modelsPath = path.join(__dirname, 'lib/models');
-// fs.readdirSync(modelsPath).forEach(function (file) {
-//   if(!RegExp('^.+?\.sw.?$', 'i').test(file)) {
-//     require(modelsPath + '/' + file);
-//   }
-// });
+var modelsPath = path.join(__dirname, 'lib/models');
+fs.readdirSync(modelsPath).forEach(function (file) {
+  if(!RegExp('^.+?\.sw.?$', 'i').test(file)) {
+    require(modelsPath + '/' + file);
+  }
+});
 
 // Populate empty DB with uummy data
 // require('./lib/db/dummydata');
@@ -45,7 +46,7 @@ app.configure(function(){
 // });
 
 // Routes
-// app.get('/api/verbs/:book', api.verbs);
+// app.get('/edit', '/Edit.html');
 // app.get('/api/houses', api.houses);
 // app.get('/api/general-result', api.generalResult);
 

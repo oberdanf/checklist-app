@@ -1,1 +1,1 @@
-node web-server.js
+nodemon web-server.js
