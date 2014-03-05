@@ -1,0 +1,17 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Antonio Campos -- Developer -- antonio.campos@bravi.com.br
+    Oberdan Ferreira -- Developer -- oberdan.ferreira@bravi.com.br
+    Ruann Homem -- Developer -- ruann.homem@bravi.com.br
+
+# THANKS
+
+    Mom
+
+# TECHNOLOGY COLOPHON
+
+    HTML5, CSS3
+    jQuery, Modernizr

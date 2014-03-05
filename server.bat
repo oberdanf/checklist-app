@@ -1,1 +1,1 @@
-nodemon web-server.js
+grunt

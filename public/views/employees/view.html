@@ -1,0 +1,15 @@
+<section data-ng-controller="EmployeesController" data-ng-init="findOne()">
+    <h1>Employee</h1>
+    
+    <h2>{{employee.name}}</h2>
+    <span>Start Date: {{employee.date | date:'medium'}}</span>
+    <span>Responsible: {{employee.responsible}}</span>
+    <div data-ng-show="global.user._id == employee.user._id">
+        <a class="btn" href="/#!/employees/{{employee._id}}/edit">
+          <i class="glyphicon glyphicon-edit"></i>
+        </a>
+        <a class="btn" data-ng-click="remove();">
+            <i class="glyphicon glyphicon-trash"></i>
+        </a>
+    </div>
+</section>
