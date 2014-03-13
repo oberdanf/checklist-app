@@ -87,7 +87,34 @@ exports.show = function(req, res) {
  * List of Employees
  */
 exports.all = function(req, res) {
-    Employee.find().sort('-created').populate('user', 'name username').exec(function(err, employees) {
+    Employee.find().sort('-created').exec(function(err, employees) {
+        if (err) {
+            res.render('error', {
+                status: 500
+            });
+        } else {
+            res.jsonp(employees);
+        }
+    });
+};
+
+/**
+ * List of Employees
+ */
+exports.notReadyEmployees = function(req, res) {
+    Employee.find().where('progress').lt(100).sort('-progress').exec(function(err, employees) {
+        if (err) {
+            res.render('error', {
+                status: 500
+            });
+        } else {
+            res.jsonp(employees);
+        }
+    });
+};
+
+exports.readyEmployees = function(req, res) {
+    Employee.find({ progress: 100 }).exec(function(err, employees) {
         if (err) {
             res.render('error', {
                 status: 500

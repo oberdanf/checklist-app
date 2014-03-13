@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('mean.employees')
-    .controller('EmployeesController', ['$scope', '$stateParams', '$location', 'Global', 'Employees', function ($scope, $stateParams, $location, Global, Employees) {
+    .controller('EmployeesController',
+        ['$scope', '$stateParams', '$location', 'Global', 'Employees', 'ReadyEmployees', 'NotReadyEmployees',
+        function ($scope, $stateParams, $location, Global, Employees, ReadyEmployees, NotReadyEmployees) {
     $scope.global = Global;
 
     $scope.create = function() {
@@ -62,4 +64,17 @@ angular.module('mean.employees')
             $scope.employee = employee;
         });
     };
+
+    //It will execute automatically
+    (function findEmployees() {
+
+        ReadyEmployees.query(function(employees) {
+            $scope.readyEmployees = employees;
+        });
+
+        NotReadyEmployees.query(function(employees) {
+            $scope.notReadyEmployees = employees;
+        });
+    })();
+
 }]);
