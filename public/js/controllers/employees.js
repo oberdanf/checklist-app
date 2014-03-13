@@ -14,13 +14,8 @@ angular.module('mean.employees')
             responsible: this.responsible
         });
         employee.$save(function(response) {
-            $location.path('employees/' + response._id);
+            $location.path('employees/' + response._id + '/edit');
         });
-
-        this.progress = 0;
-        this.name = '';
-        this.date = '';
-        this.responsible = '';
     };
 
     $scope.remove = function(employee) {
@@ -41,13 +36,9 @@ angular.module('mean.employees')
 
     $scope.update = function() {
         var employee = $scope.employee;
-        if (!employee.updated) {
-            employee.updated = [];
-        }
-        employee.updated.push(new Date().getTime());
 
         employee.$update(function() {
-            $location.path('employees/' + employee._id);
+            $location.path('employees/' + employee._id + '/edit');
         });
     };
 

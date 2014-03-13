@@ -114,7 +114,7 @@ exports.notReadyEmployees = function(req, res) {
 };
 
 exports.readyEmployees = function(req, res) {
-    Employee.find({ progress: 100 }).exec(function(err, employees) {
+    Employee.find({ progress: 100 }).sort('-date').exec(function(err, employees) {
         if (err) {
             res.render('error', {
                 status: 500

@@ -4,7 +4,7 @@
     <h2>{{employee.name}}</h2>
     <span>Start Date: {{employee.date | date:'medium'}}</span>
     <span>Responsible: {{employee.responsible}}</span>
-    <div data-ng-show="global.user._id == employee.user._id">
+    <div data-ng-show="global.user._id == employee._id">
         <a class="btn" href="/#!/employees/{{employee._id}}/edit">
           <i class="glyphicon glyphicon-edit"></i>
         </a>
