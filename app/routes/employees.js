@@ -22,6 +22,11 @@ module.exports = function(app) {
     app.put('/employees/:employeeId', authorization.requiresLogin, employees.update);
     app.del('/employees/:employeeId', authorization.requiresLogin, employees.destroy);
 
+    //Checklist routes
+    //TODO: Move this to a proper route when a user can have more than one checklist
+    app.get('/checklist/:employeeId', authorization.requiresLogin, employees.show);
+    app.post('/checklist/:employeeId', authorization.requiresLogin, employees.update);
+
     // Finish with setting up the employeeId param
     app.param('employeeId', employees.employee);
 

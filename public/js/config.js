@@ -11,7 +11,6 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
       /* Employees */
       .state('all employees', {
         url: '/employees',
-        // templateUrl: 'views/employees/list.html'
         templateUrl: 'views/index.html'
     })
       .state('create employee', {
@@ -26,11 +25,10 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
         url: '/employees/:employeeId',
         templateUrl: 'views/employees/view.html'
     })
-      /* Workflow */
-      .state('edit workflow', {
-        url: '/workflow/edit',
-        // templateUrl: 'views/employees/list.html'
-        templateUrl: 'workflow/edit.html'
+      /* Checklist */
+      .state('edit checklist', {
+        url: '/checklist/:employeeId',
+        templateUrl: 'views/checklist/edit.html'
     })
       .state('home', {
         url: '/',

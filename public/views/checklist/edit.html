@@ -1,9 +1,9 @@
-<section data-ng-controller="ChecklistController">
+<section data-ng-controller="EmployeeController" data-ng-init="findOne()">
   <div class="container" >
-    <h1>{{employeeName}}</h1>
+    <h1>{{employee.name}}</h1>
     <div class="progress-bar progress-bar-info" 
           role="progressbar"
-          aria-valuenow="10"
+          aria-valuenow="{{employee.checklist.progress}}"
           aria-valuemin="0"
           aria-valuemax="100"
           style="width: 10%">
@@ -20,10 +20,12 @@
           <th>Task</th>
         </tr>
       </thead>
-      <tr ng-repeat="task in tasks">
+      <tr ng-repeat="step in employee.checklist.steps">
         <td style="width:10px">
           <input type="checkbox"></td>
-        <td>{{task.text}}</td>
+        <td>{{step.name}}</td>
+        <td>{{step.description}}</td>
+        <td>{{step.isCompleted}}</td>
       </tr>
     </table>
     <button type="button" class="btn btn-success">

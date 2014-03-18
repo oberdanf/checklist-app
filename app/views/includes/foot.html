@@ -22,7 +22,7 @@
 <!-- Application Controllers -->
 <script type="text/javascript" src="/js/controllers/articles.js"></script>
 <script type="text/javascript" src="/js/controllers/employees.js"></script>
-<script type="text/javascript" src="/js/controllers/workflows.js"></script>
+<script type="text/javascript" src="/js/controllers/checklist.js"></script>
 <script type="text/javascript" src="/js/controllers/index.js"></script>
 <script type="text/javascript" src="/js/controllers/header.js"></script>
 <script type="text/javascript" src="/js/init.js"></script>
@@ -30,5 +30,5 @@
 
 {% if (process.env.NODE_ENV == 'development') %}
     <!-- Livereload script rendered -->
-    <!-- <scr/ipt type="text/javascript" src="{{'http://' + req.host + ':35729/livereload.js'}}"></script> -->
+    <scr/ipt type="text/javascript" src="{{'http://' + req.host + ':35729/livereload.js'}}"></script>
 {% endif %}
