@@ -25,6 +25,32 @@ exports.employee = function(req, res, next, id) {
  */
 exports.create = function(req, res) {
     var employee = new Employee(req.body);
+    employee.checklist = {
+        name: 'EBS Induction Process',
+        progress: 0,
+        steps: [
+            {
+                name: 'Step name 1',
+                description: 'Step description 1',
+                isCompleted: false
+            },
+            {
+                name: 'Step name 2',
+                description: 'Step description 2',
+                isCompleted: false
+            },
+            {
+                name: 'Step name 3',
+                description: 'Step description 3',
+                isCompleted: false
+            },
+            {
+                name: 'Step name 4',
+                description: 'Step description 4',
+                isCompleted: false
+            }
+        ]
+    };
     
     employee.save(function(err) {
         if (err) {
@@ -43,7 +69,6 @@ exports.create = function(req, res) {
  */
 exports.update = function(req, res) {
     var employee = req.employee;
-
     employee = _.extend(employee, req.body);
 
     employee.save(function(err) {

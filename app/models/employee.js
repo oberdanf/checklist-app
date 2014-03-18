@@ -29,6 +29,36 @@ var EmployeeSchema = new Schema({
         type: String,
         required: true,
         trim: true
+    },
+    checklist: {
+        name: {
+            type: String,
+            required: true,
+            trim: true
+        },
+        progress: {
+            type: Number,
+            required: true,
+            default: 0
+        },
+        steps: [
+            {
+                name: {
+                    type: String,
+                    required: true,
+                    trim: true
+                },
+                description: {
+                    type: String,
+                    required: true,
+                    trim: false
+                },
+                isCompleted: {
+                    type: Boolean,
+                    required: false
+                }
+            }
+        ]
     }
 });
 
