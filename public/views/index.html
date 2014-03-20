@@ -37,7 +37,7 @@
             <td>{{employee.date | date: 'dd/MM/yyyy' }}</td>
             <td>{{employee.responsible}}</td>
             <td>
-              <a class="btn btn-primary btn-sm" href="#!/workflow/edit">
+              <a class="btn btn-primary btn-sm" href="#!/checklist/{{employee._id}}">
                 <span class="glyphicon glyphicon-wrench"></span>
                 Edit
               </a>
@@ -81,14 +81,14 @@
             <td>{{employee.date | date: 'dd/MM/yyyy'}}</td>
             <td>{{employee.responsible}}</td>
             <td>
-              <button type="button" class="btn btn-primary btn-sm">
+              <a class="btn btn-primary btn-sm" href="#!/checklist/{{employee._id}}">
                 <span class="glyphicon glyphicon-wrench"></span>
                 Edit
-              </button>
-              <button type="button" class="btn btn-danger btn-sm">
+              </a>
+              <a class="btn btn-danger btn-sm" href="#/delete">
                 <span class="glyphicon glyphicon-fire"></span>
                 Delete
-              </button>
+              </a>
             </td>
           </tr>
         </table>

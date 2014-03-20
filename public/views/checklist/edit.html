@@ -1,36 +1,40 @@
-<section data-ng-controller="EmployeeController" data-ng-init="findOne()">
+<section data-ng-controller="EmployeesController" data-ng-init="findOne()">
   <div class="container" >
     <h1>{{employee.name}}</h1>
-    <div class="progress-bar progress-bar-info" 
+    <form class="form-horizontal col-md-6" data-ng-submit="update()">
+      <div class="form-group">
+        <div class="progress-bar progress-bar-info" 
           role="progressbar"
           aria-valuenow="{{employee.checklist.progress}}"
           aria-valuemin="0"
           aria-valuemax="100"
           style="width: 10%">
-      <span class="sr-only">50% Complete</span>
-    </div>
-    <button type="button" class="btn btn-success">
-      <span class="glyphicon glyphicon-plus"></span>
-      Add New Task
-    </button>
-    <table class="table">
-      <thead>
-        <tr>
-          <th></th>
-          <th>Task</th>
-        </tr>
-      </thead>
-      <tr ng-repeat="step in employee.checklist.steps">
-        <td style="width:10px">
-          <input type="checkbox"></td>
-        <td>{{step.name}}</td>
-        <td>{{step.description}}</td>
-        <td>{{step.isCompleted}}</td>
-      </tr>
-    </table>
-    <button type="button" class="btn btn-success">
-      <span class="glyphicon glyphicon-save"></span>
-      Save
-    </button>
+          <span class="sr-only">50% Complete</span>
+        </div>
+        <div>
+          <fieldset>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Step</th>
+                  <th>Description</th>
+                  <th>Completed?</th>
+                </tr>
+              </thead>
+              <tr ng-repeat="step in employee.checklist.steps">
+                <td style="width:300px">{{step.name}}</td>
+                <td>{{step.description}}</td>
+                <td>
+                  <input type="checkbox" name="isCompleted" ng-model="step.isCompleted"></td>
+              </tr>
+            </table>
+          </fieldset>
+        </div>
+        <button type="submit" class="btn btn-success">
+          <span class="glyphicon glyphicon-save"></span>
+          Save
+        </button>
+      </div>
+    </form>
   </div>
 </section>
