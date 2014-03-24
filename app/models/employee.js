@@ -11,11 +11,6 @@ var mongoose = require('mongoose'),
  * Employee Schema
  */
 var EmployeeSchema = new Schema({
-    progress: {
-        type: Number,
-        required: true,
-        default: 0
-    },
     name: {
         type: String,
         required: true,

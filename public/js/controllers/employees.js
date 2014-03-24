@@ -38,7 +38,11 @@ angular.module('mean.employees')
         var employee = $scope.employee;
 
         employee.$update(function() {
-            $location.path('employees/' + employee._id + '/edit');
+            if ($location.path().indexOf('checklist') !== -1) {
+                $location.path('checklist/' + employee._id);
+            } else{
+                $location.path('employees/' + employee._id + '/edit');
+            }
         });
     };
 

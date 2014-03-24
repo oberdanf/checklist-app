@@ -70,6 +70,21 @@ exports.create = function(req, res) {
 exports.update = function(req, res) {
     var employee = req.employee;
     employee = _.extend(employee, req.body);
+    
+    if (employee.checklist.steps.length > 0) {
+
+        var completeSteps =
+            employee.checklist.steps.filter(
+                function(step){
+                    return step.isCompleted;
+                }
+            );
+
+        employee.checklist.progress = (completeSteps.length / employee.checklist.steps.length) * 100;
+
+    } else {
+        employee.checklist.progress = 0;
+    }
 
     employee.save(function(err) {
         if (err) {
@@ -127,7 +142,7 @@ exports.all = function(req, res) {
  * List of Employees
  */
 exports.notReadyEmployees = function(req, res) {
-    Employee.find().where('progress').lt(100).sort('-progress').exec(function(err, employees) {
+    Employee.find().where('checklist.progress').lt(100).sort('-progress').exec(function(err, employees) {
         if (err) {
             res.render('error', {
                 status: 500
@@ -139,7 +154,7 @@ exports.notReadyEmployees = function(req, res) {
 };
 
 exports.readyEmployees = function(req, res) {
-    Employee.find({ progress: 100 }).sort('-date').exec(function(err, employees) {
+    Employee.find().where('checklist.progress').equals(100).sort('-date').exec(function(err, employees) {
         if (err) {
             res.render('error', {
                 status: 500

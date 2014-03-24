@@ -25,15 +25,19 @@
               <div class="progress progress-striped active">
                 <div class="progress-bar progress-bar-info" 
                      role="progressbar"
-                     aria-valuenow="{{employee.progress}}"
+                     aria-valuenow="{{employee.checklist.progress}}"
                      aria-valuemin="0"
                      aria-valuemax="100"
-                     style="width: {{employee.progress}}%">
+                     style="width: {{employee.checklist.progress}}%">
                   <span class="sr-only">50% Complete</span>
                 </div>
               </div>
             </td>
-            <td style="width:300px">{{employee.name}}</td>
+            <td style="width:300px">
+              <a href="#!/employees/{{employee._id}}/edit">
+                {{employee.name}}
+              </a>
+            </td>
             <td>{{employee.date | date: 'dd/MM/yyyy' }}</td>
             <td>{{employee.responsible}}</td>
             <td>
@@ -41,7 +45,7 @@
                 <span class="glyphicon glyphicon-wrench"></span>
                 Edit
               </a>
-              <a class="btn btn-danger btn-sm" href="#/delete">
+              <a class="btn btn-danger btn-sm" href="#!/employee/delete">
                 <span class="glyphicon glyphicon-fire"></span>
                 Delete
               </a>
@@ -69,10 +73,10 @@
               <div class="progress">
                 <div class="progress-bar progress-bar-success" 
                      role="progressbar"
-                     aria-valuenow="{{employee.progress}}"
+                     aria-valuenow="{{employee.checklist.progress}}"
                      aria-valuemin="0"
                      aria-valuemax="100"
-                     style="width: {{employee.progress}}%">
+                     style="width: {{employee.checklist.progress}}%">
                   <span class="sr-only">60% Complete</span>
                 </div>
               </div>
