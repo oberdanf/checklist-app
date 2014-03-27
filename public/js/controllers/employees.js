@@ -4,7 +4,9 @@ angular.module('mean.employees')
     .controller('EmployeesController',
         ['$scope', '$stateParams', '$location', 'Global', 'Employees', 'ReadyEmployees', 'NotReadyEmployees',
         function ($scope, $stateParams, $location, Global, Employees, ReadyEmployees, NotReadyEmployees) {
+    
     $scope.global = Global;
+    $scope.sortOrder = 'progress';
 
     $scope.create = function() {
         var employee = new Employees({
@@ -20,16 +22,10 @@ angular.module('mean.employees')
 
     $scope.remove = function(employee) {
         if (employee) {
-            employee.$remove();
-
-            for (var i in $scope.employees) {
-                if ($scope.employees[i] === employee) {
-                    $scope.employees.splice(i, 1);
-                }
-            }
+            employee.$delete();
         }
         else {
-            $scope.employee.$remove();
+            $scope.employee.$delete();
             $location.path('employees');
         }
     };
@@ -46,11 +42,11 @@ angular.module('mean.employees')
         });
     };
 
-    $scope.find = function() {
+    /*$scope.find = function() {
         Employees.query(function(employees) {
             $scope.employees = employees;
         });
-    };
+    };*/
 
     $scope.findOne = function() {
         Employees.get({

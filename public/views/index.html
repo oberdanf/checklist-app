@@ -1,4 +1,4 @@
-<section data-ng-controller="IndexController">
+<section data-ng-controller="EmployeesController">
   <div>
     <div class="container" id="newEmployees">
       <h1>
@@ -45,10 +45,10 @@
                 <span class="glyphicon glyphicon-wrench"></span>
                 Edit
               </a>
-              <a class="btn btn-danger btn-sm" href="#!/employee/delete">
+              <button type="button" class="btn btn-danger btn-sm" ng-click="remove(employee)">
                 <span class="glyphicon glyphicon-fire"></span>
                 Delete
-              </a>
+              </button>
             </td>
           </tr>
         </table>
@@ -89,7 +89,7 @@
                 <span class="glyphicon glyphicon-wrench"></span>
                 Edit
               </a>
-              <a class="btn btn-danger btn-sm" href="#/delete">
+              <a class="btn btn-danger btn-sm" href="#!/employees/{{employee._id}}/delete">
                 <span class="glyphicon glyphicon-fire"></span>
                 Delete
               </a>

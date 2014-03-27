@@ -7,6 +7,9 @@ angular.module('mean.employees').factory('Employees', ['$resource', function($re
     }, {
         update: {
             method: 'PUT'
+        },
+        'delete': {
+            method: 'DEL'
         }
     });
 }]);
