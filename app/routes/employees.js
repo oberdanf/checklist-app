@@ -14,15 +14,13 @@ var authorization = require('./middlewares/authorization');
 
 module.exports = function(app) {
 
-    app.get('/employees', employees.all);
-    app.get('/employees/notready', employees.notReadyEmployees);
-    app.get('/employees/ready', employees.readyEmployees);
+    app.get('/employees', authorization.requiresLogin, employees.all);
+    app.get('/employees/notready', authorization.requiresLogin, employees.notReadyEmployees);
+    app.get('/employees/ready', authorization.requiresLogin, employees.readyEmployees);
     app.post('/employees', authorization.requiresLogin, employees.create);
-    app.get('/employees/:employeeId', employees.show);
+    app.get('/employees/:employeeId', authorization.requiresLogin, employees.show);
     app.put('/employees/:employeeId', authorization.requiresLogin, employees.update);
     app.del('/employees/:employeeId', authorization.requiresLogin, employees.destroy);
-    app.del('/employees/notready/:employeeId', authorization.requiresLogin, employees.destroy);
-    app.del('/employees/ready/:employeeId', authorization.requiresLogin, employees.destroy);
 
     //Checklist routes
     //TODO: Move this to a proper route when a user can have more than one checklist

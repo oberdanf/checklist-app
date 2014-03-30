@@ -23,32 +23,32 @@ module.exports = function(passport) {
         });
     });
 
-    // Use local strategy
-    passport.use(new LocalStrategy({
-            usernameField: 'email',
-            passwordField: 'password'
-        },
-        function(email, password, done) {
-            User.findOne({
-                email: email
-            }, function(err, user) {
-                if (err) {
-                    return done(err);
-                }
-                if (!user) {
-                    return done(null, false, {
-                        message: 'Unknown user'
-                    });
-                }
-                if (!user.authenticate(password)) {
-                    return done(null, false, {
-                        message: 'Invalid password'
-                    });
-                }
-                return done(null, user);
-            });
-        }
-    ));
+    // // Use local strategy
+    // passport.use(new LocalStrategy({
+    //         usernameField: 'email',
+    //         passwordField: 'password'
+    //     },
+    //     function(email, password, done) {
+    //         User.findOne({
+    //             email: email
+    //         }, function(err, user) {
+    //             if (err) {
+    //                 return done(err);
+    //             }
+    //             if (!user) {
+    //                 return done(null, false, {
+    //                     message: 'Unknown user'
+    //                 });
+    //             }
+    //             if (!user.authenticate(password)) {
+    //                 return done(null, false, {
+    //                     message: 'Invalid password'
+    //                 });
+    //             }
+    //             return done(null, user);
+    //         });
+    //     }
+    // ));
 
     // Use google strategy
     passport.use(new GoogleStrategy({
@@ -68,6 +68,15 @@ module.exports = function(passport) {
                         provider: 'google',
                         google: profile._json
                     });
+
+                    //validating Bravi-only users
+                    if (user.email.indexOf('@bravisoftware.com') == -1 || user.email.indexOf('@bravi.com.br') == -1) {
+                        return done({
+                                status: 401,
+                                message: 'You have to use a Bravi Software account.'
+                            }, user);
+                    };
+
                     user.save(function(err) {
                         if (err) console.log(err);
                         return done(err, user);

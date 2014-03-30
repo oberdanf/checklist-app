@@ -1,5 +1,5 @@
 {
-  "name": "mean",
+  "name": "checklistApp",
   "version": "0.1.3",
   "dependencies": {
     "angular": "latest",
@@ -9,7 +9,8 @@
     "angular-route": "latest",
     "bootstrap": "3.0.3",
     "angular-bootstrap": "0.10.0",
-    "angular-ui-router": "#master"
+    "angular-ui-router": "#master",
+    "AngularJS-Toaster": "~0.4.5"
   },
   "devDependencies": {
     "bootswatch": "~3.1.1"

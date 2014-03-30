@@ -5,12 +5,8 @@ angular.module('mean.employees').factory('Employees', ['$resource', function($re
     return $resource('employees/:employeeId', {
         employeeId: '@_id'
     }, {
-        update: {
-            method: 'PUT'
-        },
-        'delete': {
-            method: 'DEL'
-        }
+        update: { method: 'PUT' },
+        'delete': { method: 'DELETE' },
     });
 }]);
 

@@ -23,3 +23,7 @@ footer {
 footer p {
     padding:5px 0 12px 10px
 }
+
+.toast-top-right {
+  top: 4em !important;
+}

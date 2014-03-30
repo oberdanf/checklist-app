@@ -93,7 +93,7 @@ module.exports = function(app, passport, db) {
 
             // Error page
             res.status(500).render('500', {
-                error: err.stack
+                error: err.stack || err.message
             });
         });
 

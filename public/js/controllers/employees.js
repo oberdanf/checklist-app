@@ -2,8 +2,8 @@
 
 angular.module('mean.employees')
     .controller('EmployeesController',
-        ['$scope', '$stateParams', '$location', 'Global', 'Employees', 'ReadyEmployees', 'NotReadyEmployees',
-        function ($scope, $stateParams, $location, Global, Employees, ReadyEmployees, NotReadyEmployees) {
+        ['$scope', '$stateParams', '$location', 'toaster', 'Global', 'Employees', 'ReadyEmployees', 'NotReadyEmployees',
+        function ($scope, $stateParams, $location, toaster, Global, Employees, ReadyEmployees, NotReadyEmployees) {
     
     $scope.global = Global;
     $scope.sortOrder = 'progress';
@@ -16,16 +16,19 @@ angular.module('mean.employees')
             responsible: this.responsible
         });
         employee.$save(function(response) {
+            toaster.pop('success', '', 'Employee successfully created');
             $location.path('employees/' + response._id + '/edit');
         });
     };
 
     $scope.remove = function(employee) {
         if (employee) {
-            employee.$delete();
+            Employees.delete({}, employee);
+            // employee.$delete();
         }
         else {
             $scope.employee.$delete();
+            toaster.pop('success', '', 'Employee successfully deleted');
             $location.path('employees');
         }
     };
@@ -34,6 +37,7 @@ angular.module('mean.employees')
         var employee = $scope.employee;
 
         employee.$update(function() {
+            toaster.pop('success', '', 'Employee successfully updated');
             if ($location.path().indexOf('checklist') !== -1) {
                 $location.path('checklist/' + employee._id);
             } else{
@@ -41,12 +45,6 @@ angular.module('mean.employees')
             }
         });
     };
-
-    /*$scope.find = function() {
-        Employees.query(function(employees) {
-            $scope.employees = employees;
-        });
-    };*/
 
     $scope.findOne = function() {
         Employees.get({
@@ -59,12 +57,16 @@ angular.module('mean.employees')
     //It will execute automatically
     (function findEmployees() {
 
-        ReadyEmployees.query(function(employees) {
+        ReadyEmployees.query(function success (employees) {
             $scope.readyEmployees = employees;
+        }, function error (err) {
+            toaster.pop('error', '', err.data);
         });
 
-        NotReadyEmployees.query(function(employees) {
+        NotReadyEmployees.query(function success (employees) {
             $scope.notReadyEmployees = employees;
+        }, function error (err) {
+            toaster.pop('error', '', err.data);
         });
     })();
 
