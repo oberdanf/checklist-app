@@ -2,8 +2,8 @@
 
 angular.module('mean.employees')
     .controller('EmployeesController',
-        ['$scope', '$stateParams', '$location', 'toaster', 'Global', 'Employees', 'ReadyEmployees', 'NotReadyEmployees',
-        function ($scope, $stateParams, $location, toaster, Global, Employees, ReadyEmployees, NotReadyEmployees) {
+        ['$scope', '$stateParams', '$location', '$state', 'toaster', 'Global', 'Employees', 'ReadyEmployees', 'NotReadyEmployees',
+        function ($scope, $stateParams, $location, $state, toaster, Global, Employees, ReadyEmployees, NotReadyEmployees) {
     
     $scope.global = Global;
     $scope.sortOrder = 'progress';
@@ -22,15 +22,15 @@ angular.module('mean.employees')
     };
 
     $scope.remove = function(employee) {
-        if (employee) {
-            Employees.delete({}, employee);
-            // employee.$delete();
+        var emp = employee;
+        if (!employee) {
+            emp = $scope.employee;
         }
-        else {
-            $scope.employee.$delete();
-            toaster.pop('success', '', 'Employee successfully deleted');
-            $location.path('employees');
-        }
+
+        Employees.delete({}, emp);
+        toaster.pop('success', '', 'Employee successfully deleted');
+        //$location.path('dashboard');
+        $state.reload();
     };
 
     $scope.update = function() {
