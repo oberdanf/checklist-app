@@ -1,34 +1,13 @@
 'use strict';
 
 module.exports = {
-    db: 'mongodb://localhost/checklistApp-test',
-    port: 3001,
+    db: 'mongodb://localhost/checklistApp-dev',
     app: {
-        name: 'MEAN - A Modern Stack - Test'
-    },
-    facebook: {
-        clientID: 'APP_ID',
-        clientSecret: 'APP_SECRET',
-        callbackURL: 'http://localhost:3000/auth/facebook/callback'
-    },
-    twitter: {
-        clientID: 'CONSUMER_KEY',
-        clientSecret: 'CONSUMER_SECRET',
-        callbackURL: 'http://localhost:3000/auth/twitter/callback'
-    },
-    github: {
-        clientID: 'APP_ID',
-        clientSecret: 'APP_SECRET',
-        callbackURL: 'http://localhost:3000/auth/github/callback'
+        name: 'Checklist App - Test'
     },
     google: {
-        clientID: 'APP_ID',
-        clientSecret: 'APP_SECRET',
+        clientID: process.CHECKLIST_APP_GOOGLE_APP_ID,
+        clientSecret: process.CHECKLIST_APP_GOOGLE_SECRET,
         callbackURL: 'http://localhost:3000/auth/google/callback'
-    },
-    linkedin: {
-        clientID: 'API_KEY',
-        clientSecret: 'SECRET_KEY',
-        callbackURL: 'http://localhost:3000/auth/linkedin/callback'
     }
 };

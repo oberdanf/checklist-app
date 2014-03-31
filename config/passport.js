@@ -70,7 +70,7 @@ module.exports = function(passport) {
                     });
 
                     //validating Bravi-only users
-                    if (user.email.indexOf('@bravisoftware.com') == -1 || user.email.indexOf('@bravi.com.br') == -1) {
+                    if (user.email.indexOf('@bravisoftware.com') == -1 && user.email.indexOf('@bravi.com.br') == -1) {
                         return done({
                                 status: 401,
                                 message: 'You have to use a Bravi Software account.'

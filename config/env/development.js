@@ -6,8 +6,8 @@ module.exports = {
         name: 'Checklist App - Dev'
     },
     google: {
-        clientID: 'APP_ID',
-        clientSecret: 'CLIENT_SECRET',
+        clientID: process.env.CHECKLIST_APP_GOOGLE_APP_ID,
+        clientSecret: process.env.CHECKLIST_APP_GOOGLE_APP_SECRET,
         callbackURL: 'http://localhost:3000/auth/google/callback'
     }
 };
