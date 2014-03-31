@@ -1,102 +1,24 @@
-<section data-ng-controller="EmployeesController">
+<section data-ng-controller="IndexController">
   <div>
-    <div class="container" id="newEmployees">
-      <h1>
-        New Employees
-        <a href="#!/employees/create" class="btn btn-success">
-          <span class="glyphicon glyphicon-plus"></span>
-          Add
-        </a>
-      </h1>
-      <hr />
-      <fieldset>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Progress</th>
-              <th>Name</th>
-              <th>Date</th>
-              <th>Responsible</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tr ng-repeat="employee in notReadyEmployees">
-            <td>
-              <div class="progress progress-striped active">
-                <div class="progress-bar progress-bar-info" 
-                     role="progressbar"
-                     aria-valuenow="{{employee.checklist.progress}}"
-                     aria-valuemin="0"
-                     aria-valuemax="100"
-                     style="width: {{employee.checklist.progress}}%">
-                  <span class="sr-only">50% Complete</span>
-                </div>
-              </div>
-            </td>
-            <td style="width:300px">
-              <a href="#!/employees/{{employee._id}}/edit">
-                {{employee.name}}
-              </a>
-            </td>
-            <td>{{employee.date | date: 'dd/MM/yyyy' }}</td>
-            <td>{{employee.responsible}}</td>
-            <td>
-              <a class="btn btn-primary btn-sm" href="#!/checklist/{{employee._id}}">
-                <span class="glyphicon glyphicon-wrench"></span>
-                Edit
-              </a>
-              <button type="button" class="btn btn-danger btn-sm" ng-click="remove(employee)">
-                <span class="glyphicon glyphicon-fire"></span>
-                Delete
-              </button>
-            </td>
-          </tr>
-        </table>
-      </fieldset>
-    </div>
-    <div class="container" id="readyEmployees">
-      <h1>Employees ready to work! :)</h1>
-      <hr />
-      <fieldset>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Progress</th>
-              <th>Name</th>
-              <th>Date</th>
-              <th>Responsible</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tr ng-repeat="employee in readyEmployees">
-            <td>
-              <div class="progress">
-                <div class="progress-bar progress-bar-success" 
-                     role="progressbar"
-                     aria-valuenow="{{employee.checklist.progress}}"
-                     aria-valuemin="0"
-                     aria-valuemax="100"
-                     style="width: {{employee.checklist.progress}}%">
-                  <span class="sr-only">60% Complete</span>
-                </div>
-              </div>
-            </td>
-            <td style="width:300px">{{employee.name}}</td>
-            <td>{{employee.date | date: 'dd/MM/yyyy'}}</td>
-            <td>{{employee.responsible}}</td>
-            <td>
-              <a class="btn btn-primary btn-sm" href="#!/checklist/{{employee._id}}">
-                <span class="glyphicon glyphicon-wrench"></span>
-                Edit
-              </a>
-              <a class="btn btn-danger btn-sm" href="#!/employees/{{employee._id}}/delete">
-                <span class="glyphicon glyphicon-fire"></span>
-                Delete
-              </a>
-            </td>
-          </tr>
-        </table>
-      </fieldset>
+    <div class="container">
+      <div class="jumbotron" data-ng-hide="global.authenticated">
+        <h1>Hmm! It seems that you're not authenticated. :(</h1>
+        <p>
+          If you're part of the Bravi Software Staff, please, sig in with your Bravi Software account, by clicking on the button below.
+        </p>
+        <p>
+          <a class="btn btn-primary btn-lg" href="/auth/google">
+                 <img src="../img/google.png" />
+                 Sign in with Google
+            </a>
+        </p>
+      </div>
+      <div class="jumbotron" data-ng-show="global.authenticated">
+        <h2>Hello, {{global.user.name}}.</h2>
+        <p>
+          Want to see the who's entering in the company? Go to the <a href="/#!/dashboard">Dashboard</a> page.
+        </p>
+      </div>
     </div>
   </div>
 </section>

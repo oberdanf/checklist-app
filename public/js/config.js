@@ -9,6 +9,10 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
     // states for my app
     $stateProvider
       /* Employees */
+      .state('employee\'s dashboard', {
+        url: '/dashboard',
+        templateUrl: 'views/dashboard.html'
+    })
       .state('all employees', {
         url: '/employees',
         templateUrl: 'views/index.html'

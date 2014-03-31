@@ -37,10 +37,11 @@ angular.module('mean.employees')
         var employee = $scope.employee;
 
         employee.$update(function() {
-            toaster.pop('success', '', 'Employee successfully updated');
             if ($location.path().indexOf('checklist') !== -1) {
+                toaster.pop('success', '', 'Checklist successfully updated');
                 $location.path('checklist/' + employee._id);
-            } else{
+            } else {
+                toaster.pop('success', '', 'Employee successfully updated');
                 $location.path('employees/' + employee._id + '/edit');
             }
         });
