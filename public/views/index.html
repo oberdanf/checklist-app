@@ -4,19 +4,21 @@
       <div class="jumbotron" data-ng-hide="global.authenticated">
         <h1>Hmm! It seems that you're not authenticated. :(</h1>
         <p>
-          If you're part of the Bravi Software Staff, please, sig in with your Bravi Software account, by clicking on the button below.
+          If you're part of the Bravi Software Staff, please, sign in with your Bravi Software account, by clicking on the button below.
         </p>
         <p>
           <a class="btn btn-primary btn-lg" href="/auth/google">
-                 <img src="../img/google.png" />
-                 Sign in with Google
-            </a>
+            <img src="../img/google.png" />
+            Sign in with Google
+          </a>
         </p>
       </div>
       <div class="jumbotron" data-ng-show="global.authenticated">
         <h2>Hello, {{global.user.name}}.</h2>
         <p>
-          Want to see the who's entering in the company? Go to the <a href="/#!/dashboard">Dashboard</a> page.
+          Want to see the who's entering in the company? Go to the
+          <a href="/#!/dashboard">Dashboard</a>
+          page.
         </p>
       </div>
     </div>

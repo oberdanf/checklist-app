@@ -15,7 +15,7 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
     })
       .state('all employees', {
         url: '/employees',
-        templateUrl: 'views/index.html'
+        templateUrl: 'views/dashboard.html'
     })
       .state('create employee', {
         url: '/employees/create',
@@ -31,7 +31,7 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
     })
       .state('delete employee', {
         url: '/employees/:employeeId/delete',
-        templateUrl: 'views/index.html'
+        templateUrl: 'views/dashboard.html'
     })
       /* Checklist */
       .state('edit checklist', {

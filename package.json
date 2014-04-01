@@ -1,12 +1,12 @@
 {
-  "name": "mean",
-  "description": "MEAN - A Modern Stack: MongoDB, ExpressJS, AngularJS, NodeJS. (BONUS: Passport User Support).",
+  "name": "bravi-checklist",
+  "description": "Bravi Checklist",
   "version": "0.1.2",
   "private": false,
-  "author": "Amos Haviv",
+  "author": "Oberdan Ferreira & Antonio Campos",
   "repository": {
     "type": "git",
-    "url": "https://github.com/linnovate/mean.git"
+    "url": "https://github.com/oberdanf/checklist-app.git"
   },
   "engines": {
     "node": "0.10.x",
