@@ -43,7 +43,7 @@
                 <span class="glyphicon glyphicon-wrench"></span>
                 Edit
               </a>
-              <button type="button" class="btn btn-danger btn-sm" ng-click="remove(employee)">
+              <button type="button" class="btn btn-danger btn-sm" ng-click="remove(employee, notReadyEmployees, $index)">
                 <span class="glyphicon glyphicon-fire"></span>
                 Delete
               </button>
@@ -89,10 +89,10 @@
                 <span class="glyphicon glyphicon-wrench"></span>
                 Edit
               </a>
-              <a class="btn btn-danger btn-sm" href="#!/employees/{{employee._id}}/delete">
+              <button type="button" class="btn btn-danger btn-sm" ng-click="remove(employee, readyEmployees, $index)">
                 <span class="glyphicon glyphicon-fire"></span>
                 Delete
-              </a>
+              </button>
             </td>
           </tr>
         </table>

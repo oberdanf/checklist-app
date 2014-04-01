@@ -7,7 +7,7 @@
 
   <ul class="nav navbar-nav">
     <li data-ng-repeat="item in menu" data-ng-show="global.user" ui-route="/{{item.link}}" ng-class="{active: $uiRoute}">
-      <a ng-click="goToRoute(item.link)">{{item.title}}</a>
+      <a href="/#!/{{item.link}}">{{item.title}}</a>
     </li>
   </ul>
 

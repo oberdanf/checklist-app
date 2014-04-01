@@ -21,16 +21,15 @@ angular.module('mean.employees')
         });
     };
 
-    $scope.remove = function(employee) {
+    $scope.remove = function(employee, removeFromArray, index) {
         var emp = employee;
         if (!employee) {
             emp = $scope.employee;
         }
 
         Employees.delete({}, emp);
+        removeFromArray.splice(index, 1);
         toaster.pop('success', '', 'Employee successfully deleted');
-        //$location.path('dashboard');
-        $state.reload();
     };
 
     $scope.update = function() {
