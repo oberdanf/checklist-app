@@ -60,9 +60,10 @@ angular.module('mean.employees')
 
     $scope.today();
 
-    $scope.showWeeks = true;
+    $scope.showWeeks = false;
+
     $scope.toggleWeeks = function () {
-        $scope.showWeeks = ! $scope.showWeeks;
+        $scope.showWeeks = !$scope.showWeeks;
     };
 
     $scope.clear = function () {
