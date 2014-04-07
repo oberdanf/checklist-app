@@ -9,15 +9,6 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
     }];
 
     $scope.goToRoute = function(url) {
-        //Just hide the menu if it is really collapsed
-        var elMenu = document.getElementById('collapsableMenuDiv');
-        var isDisplayBlock = getComputedStyle(elMenu).display === 'block';
-
-        if (isDisplayBlock && elMenu.classList.contains('in')) {
-            $scope.isCollapsed = !$scope.isCollapsed;
-        }
-
-        //move to its path url
         $location.path(url);
     };
 
